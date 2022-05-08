@@ -1,24 +1,16 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Dec  8 17:15:31 2021
-
-@author: gonza
-"""
-
 import cv2
 import mediapipe as mp
 import serial
 import time
 
-ser = serial.Serial('COM4', 9600, timeout = 1)
-time.sleep(2)
+#ser = serial.Serial('COM4', 9600, timeout = 1)
+#time.sleep(2)
 
 mp_Face_Detection = mp.solutions.face_detection
 
 LABELS = ["Con_Mascarilla", "Sin_Mascarilla"]
 
 # Read model 
-
 Face_Mask = cv2.face.LBPHFaceRecognizer_create()
 Face_Mask.read("Face_Mask_Model.xml")
 
@@ -68,14 +60,14 @@ def camera():
                             cont_cm = cont_cm + 1;
                             print(cont_cm)
                             if cont_cm == 50:
-                                ser.write(b'O')
+                                #ser.write(b'O')
                                 cv2.destroyAllWindows()
                                 break
                         else:
                             cont_sm = cont_sm + 1;
                             print(cont_sm)
                             if cont_sm == 50:    
-                                ser.write(b'C')
+                                #ser.write(b'C')
                                 cv2.destroyAllWindows()
                                 break
                         cv2.putText(frame, "{}".format(LABELS[Result[0]]),(xmin, ymin - 25),2, 1, color, 1, cv2.LINE_AA)
@@ -92,16 +84,17 @@ def camera():
         cv2.destroyAllWindows()  
             
         
-while True:
+#while True:
     
-    cad = ser.readline().decode('ascii')
-    print(len(cad))
+    #cad = ser.readline().decode('ascii')
+    #print(len(cad))
     
-    if len(cad) != 0:
-        button = int(cad) + 10
-        print(button)
-        if int(cad) > 650:
-           ser.write(b'M')
-           camera()
+    #if len(cad) != 0:
+        #button = int(cad) + 10
+        #print(button)
+        #if int(cad) > 650:
+           #ser.write(b'M')
+           #camera()
 
-ser.close()
+#ser.close()
+camera()
