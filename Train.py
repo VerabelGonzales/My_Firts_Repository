@@ -10,7 +10,7 @@ import os
 import numpy as np
 
 
-DataPath = "D:\II_2021\Cicuitos_Electornicos_III\Project\Res_Python\OmesTutorials2021-main\OmesTutorials2021-main\Mascarillas dataset\Dataset_faces"
+DataPath = "D:\I_2022\Vision Artificial\Repositories\My_Firts_Repository\Dataset_Faces"
 Dir_list = os.listdir(DataPath)
 print("Lista archivos:",Dir_list)
 
